@@ -10,7 +10,7 @@
 
 using namespace std;
 
-// Read CSV close prices with error handling
+
 vector<double> readCSV(const string& filename) {
     ifstream file(filename);
     if (!file.is_open()) {
@@ -21,7 +21,7 @@ vector<double> readCSV(const string& filename) {
     vector<double> prices;
     string line;
     
-    // Skip header
+
     if (getline(file, line)) {
         cout << "Header: " << line << endl;
     }
@@ -29,24 +29,22 @@ vector<double> readCSV(const string& filename) {
     int lineNumber = 1;
     while (getline(file, line)) {
         lineNumber++;
-        if (line.empty()) continue;  // Skip empty lines
+        if (line.empty()) continue;  
         
         stringstream ss(line);
         string cell;
         vector<string> row;
         
-        // Split the entire row by commas
+    
         while (getline(ss, cell, ',')) {
             row.push_back(cell);
         }
         
-        // Try different common CSV formats
+    
         string closePrice;
         if (row.size() >= 2) {
-            // Try column 1 first (Date,Close format)
             closePrice = row[1];
         } else if (row.size() >= 5) {
-            // Try column 4 (Date,Open,High,Low,Close format)
             closePrice = row[4];
         }
         
