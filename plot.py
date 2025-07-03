@@ -16,7 +16,7 @@ for i in range(1, len(df)):
     elif df['Trade'][i] == -1:
         plt.scatter(i, df['Price'][i], color='red', label='Sell' if i == 1 else "", marker='v')
 
-plt.title("MACD Mean Reversion Strategy")
+plt.title("MACD Momemtum Strategy")
 plt.xlabel("Days")
 plt.ylabel("Price")
 plt.grid(True)
